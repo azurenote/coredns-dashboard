@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import {MatDialog} from "@angular/material/dialog";
+import {ConfirmDialogComponent} from "./components/confirm-dialog/confirm-dialog.component";
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,14 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'coredns-dashboard';
+
+  constructor(
+    public dialog: MatDialog
+  ) {
+  }
+
+  confirmSignOut() {
+
+    this.dialog.open(ConfirmDialogComponent, {});
+  }
 }
