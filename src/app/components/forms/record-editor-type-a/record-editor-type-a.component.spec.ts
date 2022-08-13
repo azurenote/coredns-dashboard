@@ -30,4 +30,43 @@ describe('RecordEditorTypeAComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should have a text input for domain name', () => {
+    const compiled = fixture.debugElement.nativeElement;
+    const inputElement: Element = compiled.querySelector('mat-form-field input[name="name"]');
+
+    expect(inputElement).toBeTruthy();
+
+    expect(inputElement.getAttribute('type'))
+      .toEqual('text');
+
+    expect(inputElement.getAttribute('placeholder'))
+      .toEqual('text.fill-the-input');
+  });
+
+  it('should a have text input for IPv4 address', () => {
+    const compiled = fixture.debugElement.nativeElement;
+    const inputElement = compiled.querySelector('mat-form-field input[name="ipv4"]');
+
+    expect(inputElement).toBeTruthy();
+
+    expect(inputElement.getAttribute('type'))
+      .toEqual('text');
+
+    expect(inputElement.getAttribute('placeholder'))
+      .toEqual('text.fill-the-input');
+  });
+
+  it('should have a number input for TTL', () => {
+    const compiled = fixture.debugElement.nativeElement;
+    const inputElement = compiled.querySelector('mat-form-field input[name="ttl"]');
+
+    expect(inputElement).toBeTruthy();
+
+    expect(inputElement.getAttribute('type'))
+      .toEqual('number');
+
+    expect(inputElement.getAttribute('placeholder'))
+      .toEqual('keywords.ttl');
+  });
 });

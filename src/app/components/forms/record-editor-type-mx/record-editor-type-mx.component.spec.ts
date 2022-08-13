@@ -30,4 +30,56 @@ describe('RecordEditorTypeMxComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+  it('should have name input', () => {
+    const compiled = fixture.debugElement.nativeElement;
+    const inputElement: Element = compiled.querySelector('mat-form-field input[name="name"]');
+
+    expect(inputElement).toBeTruthy();
+
+    expect(inputElement.getAttribute('type'))
+      .toEqual('text');
+
+    expect(inputElement.getAttribute('placeholder'))
+      .toEqual('text.fill-the-input');
+
+  });
+
+  it('should have a text input for the mail host name', () => {
+    const compiled = fixture.debugElement.nativeElement;
+    const inputElement = compiled.querySelector('mat-form-field input[name="host"]');
+
+    expect(inputElement).toBeTruthy();
+
+    expect(inputElement.getAttribute('type'))
+      .toEqual('text');
+
+    expect(inputElement.getAttribute('placeholder'))
+      .toEqual('text.fill-the-input');
+  });
+
+  it('should have a number input for priority', () => {
+    const compiled = fixture.debugElement.nativeElement;
+    const inputElement = compiled.querySelector('mat-form-field input[name="priority"]');
+
+    expect(inputElement).toBeTruthy();
+
+    expect(inputElement.getAttribute('type'))
+      .toEqual('number');
+
+    expect(inputElement.getAttribute('placeholder'))
+      .toEqual('keywords.priority');
+  });
+
+  it('should have a number input for TTL', () => {
+    const compiled = fixture.debugElement.nativeElement;
+    const inputElement = compiled.querySelector('mat-form-field input[name="ttl"]');
+
+    expect(inputElement).toBeTruthy();
+
+    expect(inputElement.getAttribute('type'))
+      .toEqual('number');
+
+    expect(inputElement.getAttribute('placeholder'))
+      .toEqual('keywords.ttl');
+  });
 });

@@ -39,5 +39,10 @@
     "cancel": "Cancel",
     "save": "Save",
     "delete": "Delete"
+  },
+
+
+  "text": {
+    "fill-the-input": "Placeholder"
   }
 }
