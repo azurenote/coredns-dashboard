@@ -1,3 +1,10 @@
-<section fxLayout="row" fxLayoutAlign="center start" class="container">
-  <app-zone-list fxFlex="80" (zoneSelected)="navigate($event)"></app-zone-list>
+<section>
+  <header fxLayout="row" fxLayoutAlign="center start" class="container">
+    <div fxFlex="80" fxLayout="row" fxLayoutAlign="start center">
+      <h2>Zones</h2>
+    </div>
+  </header>
+  <div fxLayout="row" fxLayoutAlign="center start" class="container">
+    <app-zone-list fxFlex="80" (zoneSelected)="navigate($event)"></app-zone-list>
+  </div>
 </section>
