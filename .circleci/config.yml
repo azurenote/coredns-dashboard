@@ -1,0 +1,26 @@
+version: 2.1
+orbs:
+  browser-tools: circleci/browser-tools@1.4.0
+jobs:
+  build:
+    working_directory: ~/coredns-dashboard
+    docker:
+      - image: cimg/node:16.16-browsers
+    steps:
+      - browser-tools/install-browser-tools
+      - run:
+          command: |
+            google-chrome --version
+            firefox --version
+            geckodriver --version
+            chromedriver --version
+          name: Check headless browsers installed
+      - checkout
+      - restore_cache:
+          key: coredns-dashboard-{{ .Branch }}-{{ checksum "package-lock.json" }}
+      - run: npm i
+      - save_cache:
+          key: coredns-dashboard-{{ .Branch }}-{{ checksum "package-lock.json" }}
+          paths:
+            - node_modules
+      - run: npm run test -- --no-watch --no-progress --browsers=ChromeHeadlessCI
