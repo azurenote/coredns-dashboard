@@ -30,4 +30,11 @@ describe('ZoneRecordListComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('has a data table', () => {
+    const compiled = fixture.debugElement.nativeElement;
+    const inputElement = compiled.querySelector('table#zone-record-list');
+
+    expect(inputElement).toBeTruthy();
+  });
 });

@@ -55,7 +55,7 @@ export class ZoneRecordListComponent {
       zone: 'data.dev',
       name: 'site',
       content: {
-        target: "canonical.host.name"
+        host: "canonical.host.name"
       },
       ttl: 3600,
       recordType: 'CNAME',
