@@ -20,6 +20,10 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { UserInfoSummaryComponent } from './components/user-info-summary/user-info-summary.component';
+import { ZoneListComponent } from './components/zone-list/zone-list.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatTableModule } from '@angular/material/table';
+import { ZoneListViewComponent } from './views/zone-list-view/zone-list-view.component';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -31,7 +35,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     AppComponent,
     ConfirmDialogComponent,
     RecordListComponent,
-    UserInfoSummaryComponent
+    UserInfoSummaryComponent,
+    ZoneListComponent,
+    ZoneListViewComponent
   ],
   imports: [
     BrowserModule,
@@ -47,6 +53,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     HttpClientModule,
     MatCardModule,
     OverlayModule,
+    FlexLayoutModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -55,7 +62,8 @@ export function HttpLoaderFactory(http: HttpClient) {
       },
       defaultLanguage: 'en-US'
     }),
-    MatTooltipModule
+    MatTooltipModule,
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]
