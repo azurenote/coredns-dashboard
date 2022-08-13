@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RecordListComponent } from './record-list.component';
+import { ZoneDetailViewComponent } from './zone-detail-view.component';
 
-describe('RecordListComponent', () => {
-  let component: RecordListComponent;
-  let fixture: ComponentFixture<RecordListComponent>;
+describe('ZoneDetailViewComponent', () => {
+  let component: ZoneDetailViewComponent;
+  let fixture: ComponentFixture<ZoneDetailViewComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ RecordListComponent ]
+      declarations: [ ZoneDetailViewComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(RecordListComponent);
+    fixture = TestBed.createComponent(ZoneDetailViewComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

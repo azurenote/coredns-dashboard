@@ -11,7 +11,6 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatListModule } from '@angular/material/list';
 import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
-import { RecordListComponent } from './components/record-list/record-list.component';
 import { GraphQLModule } from './graphql.module';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { MatCardModule } from '@angular/material/card';
@@ -24,6 +23,8 @@ import { ZoneListComponent } from './components/zone-list/zone-list.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatTableModule } from '@angular/material/table';
 import { ZoneListViewComponent } from './views/zone-list-view/zone-list-view.component';
+import { ZoneRecordListComponent } from './components/zone-record-list/zone-record-list.component';
+import { ZoneDetailViewComponent } from './views/zone-detail-view/zone-detail-view.component';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -34,10 +35,11 @@ export function HttpLoaderFactory(http: HttpClient) {
   declarations: [
     AppComponent,
     ConfirmDialogComponent,
-    RecordListComponent,
     UserInfoSummaryComponent,
     ZoneListComponent,
-    ZoneListViewComponent
+    ZoneListViewComponent,
+    ZoneRecordListComponent,
+    ZoneDetailViewComponent
   ],
   imports: [
     BrowserModule,

@@ -18,10 +18,15 @@
     "cancel": "Cancel",
     "yes": "Yes",
     "no": "No",
+    "zone": "Zone",
     "zones": "Zones",
+    "contents": "Contents",
+    "record": "Record",
+    "record-type": "Record type",
 
     "name": "Name",
-    "created-at": "Created At"
+    "created-at": "Created At",
+    "ttl": "Time to Live"
   },
   "common.actions": {
     "sign-up": "Sign up",

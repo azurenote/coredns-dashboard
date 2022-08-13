@@ -1,8 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ZoneListViewComponent } from './views/zone-list-view/zone-list-view.component';
+import { ZoneDetailViewComponent } from './views/zone-detail-view/zone-detail-view.component';
 
 const routes: Routes = [
+  { path: 'zone', component: ZoneDetailViewComponent },
   { path: '**', component: ZoneListViewComponent }
 ];
 
