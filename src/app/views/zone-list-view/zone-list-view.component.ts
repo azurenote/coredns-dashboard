@@ -1,15 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+
+import { Zone } from '../../models';
 
 @Component({
   selector: 'app-zone-list-view',
   templateUrl: './zone-list-view.component.html',
   styleUrls: ['./zone-list-view.component.scss']
 })
-export class ZoneListViewComponent implements OnInit {
+export class ZoneListViewComponent {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
-  ngOnInit(): void {
+  async navigate($event: Zone) {
+    console.log($event);
+    await this.router.navigate(['/zone']);
   }
-
 }

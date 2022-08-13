@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Zone } from '../../models';
 
 @Component({
@@ -7,6 +7,10 @@ import { Zone } from '../../models';
   styleUrls: ['./zone-list.component.scss']
 })
 export class ZoneListComponent implements OnInit {
+
+  @Output()
+  public zoneSelected = new EventEmitter<Zone>();
+
 
   displayedColumns: string[] = ['name', 'createdAt']
   dataSource: Zone[] = [
@@ -21,5 +25,4 @@ export class ZoneListComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
 }
