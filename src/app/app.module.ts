@@ -18,6 +18,13 @@ import { ZoneRecordListComponent } from './components/zone-record-list/zone-reco
 import { ZoneDetailViewComponent } from './views/zone-detail-view/zone-detail-view.component';
 import { MaterialsModule } from './materials/materials.module';
 import { RecordContentDisplayComponent } from './components/record-content-display/record-content-display.component';
+import { RecordEditorTypeAComponent } from './components/forms/record-editor-type-a/record-editor-type-a.component';
+import { RecordEditorTypeMxComponent } from './components/forms/record-editor-type-mx/record-editor-type-mx.component';
+import { RecordEditorTypeCnameComponent } from './components/forms/record-editor-type-cname/record-editor-type-cname.component';
+import { RecordFormSelectorComponent } from './components/record-form-selector/record-form-selector.component';
+import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
+import { MatBadgeModule } from '@angular/material/badge';
+import { BadgeLabelComponent } from './components/badge-label/badge-label.component';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -33,7 +40,12 @@ export function HttpLoaderFactory(http: HttpClient) {
     ZoneListViewComponent,
     ZoneRecordListComponent,
     ZoneDetailViewComponent,
-    RecordContentDisplayComponent
+    RecordContentDisplayComponent,
+    RecordEditorTypeAComponent,
+    RecordEditorTypeMxComponent,
+    RecordEditorTypeCnameComponent,
+    RecordFormSelectorComponent,
+    BadgeLabelComponent
   ],
   imports: [
     BrowserModule,
@@ -52,9 +64,12 @@ export function HttpLoaderFactory(http: HttpClient) {
       defaultLanguage: 'en-US'
     }),
     MaterialsModule,
-    GraphQLModule
+    GraphQLModule,
+    MatBadgeModule
   ],
-  providers: [],
+  providers: [
+    {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

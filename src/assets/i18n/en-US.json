@@ -2,6 +2,7 @@
   "app": {
     "title": "CoreDNS Dashboard"
   },
+
 	"components": {
 		"default": {
 			"confirm-dialog": {
@@ -13,9 +14,8 @@
       }
 		}
 	},
+
   "keywords": {
-    "ok": "Ok",
-    "cancel": "Cancel",
     "yes": "Yes",
     "no": "No",
     "zone": "Zone",
@@ -29,9 +29,15 @@
     "created-at": "Created At",
     "ttl": "Time to Live"
   },
+
   "common.actions": {
     "sign-up": "Sign up",
     "sign-in": "Sign in",
-    "sign-out": "Sign out"
+    "sign-out": "Sign out",
+
+    "ok": "Ok",
+    "cancel": "Cancel",
+    "save": "Save",
+    "delete": "Delete"
   }
 }

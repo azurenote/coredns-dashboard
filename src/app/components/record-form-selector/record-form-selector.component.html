@@ -1,0 +1,20 @@
+<form>
+  <mat-card>
+    <ng-container [ngSwitch]="item?.recordType">
+      <app-record-editor-type-a *ngSwitchCase="'A'"></app-record-editor-type-a>
+      <app-record-editor-type-mx *ngSwitchCase="'MX'"></app-record-editor-type-mx>
+      <app-record-editor-type-cname *ngSwitchCase="'CNAME'"></app-record-editor-type-cname>
+      <div *ngSwitchDefault fxLayoutAlign="center center">
+        Unsupported record type: {{item?.recordType}} <mat-icon>error_outline</mat-icon>
+      </div>
+    </ng-container>
+
+    <mat-card-actions fxLayoutAlign="space-between center">
+      <button mat-raised-button color="warn" type="button" (click)="delete()" translate="common.actions.delete"></button>
+      <span>
+        <button mat-raised-button color="primary" (click)="save()" translate="common.actions.save"></button>
+        <button mat-raised-button type="button" (click)="cancel()" translate="common.actions.cancel"></button>
+      </span>
+    </mat-card-actions>
+  </mat-card>
+</form>

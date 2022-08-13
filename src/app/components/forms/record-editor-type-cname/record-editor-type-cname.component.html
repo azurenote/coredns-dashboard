@@ -1,0 +1,22 @@
+<ng-container>
+  <mat-form-field>
+    <mat-label translate="keywords.name"></mat-label>
+    <input matInput placeholder="Placeholder">
+    <mat-icon matSuffix>check</mat-icon>
+    <mat-hint>Hint</mat-hint>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Target</mat-label>
+    <input matInput placeholder="Placeholder">
+    <mat-icon matSuffix>check</mat-icon>
+    <mat-hint>Hint</mat-hint>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label translate="keywords.ttl"></mat-label>
+    <input matInput [placeholder]="'keywords.ttl' | translate" type="number">
+    <mat-icon matSuffix>check</mat-icon>
+    <mat-hint>0~65535</mat-hint>
+  </mat-form-field>
+</ng-container>

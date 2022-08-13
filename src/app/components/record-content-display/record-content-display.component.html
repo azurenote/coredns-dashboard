@@ -1,12 +1,19 @@
 <ng-container [ngSwitch]="record.recordType">
-  <span *ngSwitchCase="'A'">
+  <div *ngSwitchCase="'A'">
     {{record.content.ip}}
-  </span>
-  <span *ngSwitchCase="'MX'">
+  </div>
+
+  <div *ngSwitchCase="'MX'" fxLayoutAlign="space-between">
     {{record.content.host}}
-    <span [matTooltip]="'keywords.priority' | translate">({{record.content.priority}})</span>
-  </span>
-  <span *ngSwitchDefault>
+    <app-badge-label [value]="record.content.priority | number"
+                     [matTooltip]="'keywords.priority' | translate"></app-badge-label>
+  </div>
+
+  <div *ngSwitchCase="'CNAME'">
+    {{record.content.target}}
+  </div>
+
+  <div *ngSwitchDefault>
     {{record.content}}
-  </span>
+  </div>
 </ng-container>

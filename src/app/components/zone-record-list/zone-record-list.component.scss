@@ -2,7 +2,29 @@
 table {
   width: 100%;
 
-  tr.mat-row:hover {
-    background-color: aliceblue;
+  tr.detail-row {
+    height: 0;
   }
+
+  tr.mat-row:not(.expanded-row):hover {
+    background: whitesmoke;
+  }
+
+  tr.mat-row:not(.expanded-row):active {
+    background: #efefef;
+  }
+
+  .mat-row td {
+    border-bottom-width: 0;
+  }
+
+  .item-detail {
+    overflow: hidden;
+    display: flex;
+  }
+}
+
+
+app-record-form-selector {
+  width: 99%;
 }
