@@ -13,7 +13,15 @@ import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dial
 import { MatDialogModule } from '@angular/material/dialog';
 import { RecordListComponent } from './components/record-list/record-list.component';
 import { GraphQLModule } from './graphql.module';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { MatCardModule } from '@angular/material/card';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+
+// AoT requires an exported function for factories
+export function HttpLoaderFactory(http: HttpClient) {
+    return new TranslateHttpLoader(http,'./assets/i18n/', '.json');
+}
 
 @NgModule({
   declarations: [
@@ -32,7 +40,16 @@ import { HttpClientModule } from '@angular/common/http';
     MatListModule,
     MatDialogModule,
     GraphQLModule,
-    HttpClientModule
+    HttpClientModule,
+    MatCardModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: (HttpLoaderFactory),
+        deps: [HttpClient]
+      },
+      defaultLanguage: 'en-US'
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

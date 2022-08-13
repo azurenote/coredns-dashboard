@@ -1,0 +1,17 @@
+{
+	"components": {
+		"default": {
+			"confirm-dialog": {
+				"message": "Do you really want to?",
+				"title": "Confirm"
+			}
+		}
+	},
+  "keywords": {
+    "ok": "Ok",
+    "cancel": "Cancel",
+    "yes": "Yes",
+    "no": "No",
+    "zones": "Zones"
+  }
+}
