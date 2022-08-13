@@ -17,6 +17,7 @@ import { ZoneListViewComponent } from './views/zone-list-view/zone-list-view.com
 import { ZoneRecordListComponent } from './components/zone-record-list/zone-record-list.component';
 import { ZoneDetailViewComponent } from './views/zone-detail-view/zone-detail-view.component';
 import { MaterialsModule } from './materials/materials.module';
+import { RecordContentDisplayComponent } from './components/record-content-display/record-content-display.component';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -31,7 +32,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     ZoneListComponent,
     ZoneListViewComponent,
     ZoneRecordListComponent,
-    ZoneDetailViewComponent
+    ZoneDetailViewComponent,
+    RecordContentDisplayComponent
   ],
   imports: [
     BrowserModule,

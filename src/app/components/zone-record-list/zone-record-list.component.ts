@@ -21,9 +21,23 @@ export class ZoneRecordListComponent {
       id: 1,
       zone: 'data.dev',
       name: '@',
-      content: '{"ip": "192.168.0.1"}',
+      content: {
+        ip: "192.168.0.1"
+      },
       ttl: 300,
       recordType: 'A',
+      createdAt: new Date()
+    },
+    {
+      id: 1,
+      zone: 'data.dev',
+      name: 'mail',
+      content: {
+        host: "192.168.0.1",
+        priority: 100
+      },
+      ttl: 3600,
+      recordType: 'MX',
       createdAt: new Date()
     }
   ];
