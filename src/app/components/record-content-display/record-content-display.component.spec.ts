@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { RecordContentDisplayComponent } from './record-content-display.component';
+import { MaterialsModule } from "../../materials/materials.module";
 
 describe('RecordContentDisplayComponent', () => {
   let component: RecordContentDisplayComponent;
@@ -8,6 +9,9 @@ describe('RecordContentDisplayComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [
+        MaterialsModule
+      ],
       declarations: [ RecordContentDisplayComponent ]
     })
     .compileComponents();

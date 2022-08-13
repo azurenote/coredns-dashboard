@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ZoneListComponent } from './zone-list.component';
+import { MaterialsModule } from "../../materials/materials.module";
 
 describe('ZoneListComponent', () => {
   let component: ZoneListComponent;
@@ -8,6 +9,9 @@ describe('ZoneListComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [
+        MaterialsModule
+      ],
       declarations: [ ZoneListComponent ]
     })
     .compileComponents();
