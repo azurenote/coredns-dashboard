@@ -10,6 +10,7 @@ import { ConfirmDialogComponent } from "./components/confirm-dialog/confirm-dial
 export class AppComponent {
   title = 'coredns-dashboard';
 
+  isOpen = false;
   constructor(
     public dialog: MatDialog
   ) {

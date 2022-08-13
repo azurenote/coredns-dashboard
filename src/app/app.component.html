@@ -1,5 +1,5 @@
 <mat-drawer-container>
-  <mat-drawer #drawer mode="side" opened>
+  <mat-drawer #drawer mode="side">
     <mat-toolbar color="primary">
       <span translate="keywords.zones"></span>
     </mat-toolbar>
@@ -12,21 +12,40 @@
   <mat-drawer-content>
 
     <mat-toolbar color="primary">
-      <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" (click)="drawer.toggle()">
+      <button mat-icon-button
+              aria-label="Drawer toggle button"
+              (click)="drawer.toggle()">
         <mat-icon>menu</mat-icon>
       </button>
+
       <span>CoreDNS Dashboard</span>
+
       <span class="example-spacer"></span>
-      <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
-        <mat-icon>favorite</mat-icon>
+
+      <button mat-icon-button
+              aria-label="User information"
+              (mouseover)="isOpen = true"
+              (mouseout)="isOpen = false"
+              cdkOverlayOrigin #trigger="cdkOverlayOrigin">
+        <mat-icon>person</mat-icon>
       </button>
-      <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
-        <mat-icon>share</mat-icon>
-      </button>
-      <button mat-icon-button class="example-icon" aria-label="Sign out button" (click)="confirmSignOut()">
+
+      <button mat-icon-button
+              aria-label="Sign out button"
+              [matTooltip]="'common.actions.sign-out' | translate"
+              (click)="confirmSignOut()">
         <mat-icon>logout</mat-icon>
       </button>
     </mat-toolbar>
 
   </mat-drawer-content>
 </mat-drawer-container>
+
+
+<ng-template
+  cdkConnectedOverlay
+  [cdkConnectedOverlayOrigin]="trigger"
+  [cdkConnectedOverlayOpen]="isOpen"
+>
+  <app-user-info-summary></app-user-info-summary>
+</ng-template>

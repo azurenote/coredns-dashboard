@@ -15,8 +15,11 @@ import { RecordListComponent } from './components/record-list/record-list.compon
 import { GraphQLModule } from './graphql.module';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { MatCardModule } from '@angular/material/card';
+import { OverlayModule } from '@angular/cdk/overlay';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { UserInfoSummaryComponent } from './components/user-info-summary/user-info-summary.component';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -27,7 +30,8 @@ export function HttpLoaderFactory(http: HttpClient) {
   declarations: [
     AppComponent,
     ConfirmDialogComponent,
-    RecordListComponent
+    RecordListComponent,
+    UserInfoSummaryComponent
   ],
   imports: [
     BrowserModule,
@@ -42,6 +46,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     GraphQLModule,
     HttpClientModule,
     MatCardModule,
+    OverlayModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -49,7 +54,8 @@ export function HttpLoaderFactory(http: HttpClient) {
         deps: [HttpClient]
       },
       defaultLanguage: 'en-US'
-    })
+    }),
+    MatTooltipModule
   ],
   providers: [],
   bootstrap: [AppComponent]
