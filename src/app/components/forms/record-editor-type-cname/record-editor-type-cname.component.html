@@ -2,7 +2,7 @@
   <mat-form-field>
     <mat-label translate="keywords.name"></mat-label>
     <input matInput name="name" type="text"
-           [placeholder]="'text.fill-the-input' | translate">
+           [placeholder]="'keywords.subdomain' | translate">
     <mat-icon matSuffix>check</mat-icon>
     <mat-hint>Hint</mat-hint>
   </mat-form-field>
@@ -10,7 +10,7 @@
   <mat-form-field>
     <mat-label>Target</mat-label>
     <input matInput name="target" type="text"
-           [placeholder]="'text.fill-the-input' | translate">
+           [placeholder]="'text.canonical-name' | translate">
     <mat-icon matSuffix>check</mat-icon>
     <mat-hint>Hint</mat-hint>
   </mat-form-field>
@@ -18,8 +18,8 @@
   <mat-form-field>
     <mat-label translate="keywords.ttl"></mat-label>
     <input matInput name="ttl" type="number"
-           [placeholder]="'text.fill-the-input' | translate">
+           [placeholder]="'text.ttl-explain' | translate">
     <mat-icon matSuffix>check</mat-icon>
-    <mat-hint>0~65535</mat-hint>
+    <mat-hint>0~65535 seconds</mat-hint>
   </mat-form-field>
 </ng-container>

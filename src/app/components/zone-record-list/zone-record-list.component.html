@@ -31,7 +31,7 @@
   <!-- Date Column -->
   <ng-container matColumnDef="createdAt">
     <th mat-header-cell *matHeaderCellDef translate="keywords.created-at"></th>
-    <td mat-cell *matCellDef="let item">{{item.createdAt | date}}</td>
+    <td mat-cell *matCellDef="let item">{{item.createdAt | date: 'Y-MM-d HH:mm:ss'}}</td>
   </ng-container>
   >
   <ng-container matColumnDef="expand">

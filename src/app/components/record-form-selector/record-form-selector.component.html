@@ -11,16 +11,20 @@
 
     <mat-card-actions fxLayoutAlign="space-between center">
       <button mat-raised-button color="warn" type="button"
-              translate="common.actions.delete"
+              role="button"
+              aria-label="record-delete"
+              translate="common.action.delete"
               (click)="delete()"></button>
       <span>
         <button mat-raised-button color="primary"
-                aria-roledescription="Submit button"
-                translate="common.actions.save"
+                role="button"
+                aria-label="record-save"
+                translate="common.action.save"
                 (click)="save()"></button>
         <button mat-raised-button type="button"
-                aria-roledescription="Cancel button"
-                translate="common.actions.cancel"
+                role="button"
+                aria-label="record-cancel"
+                translate="common.action.cancel"
                 (click)="cancel()"></button>
       </span>
     </mat-card-actions>

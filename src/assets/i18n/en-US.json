@@ -27,10 +27,11 @@
 
     "name": "Name",
     "created-at": "Created At",
-    "ttl": "Time to Live"
+    "ttl": "Time to Live",
+    "subdomain": "Subdomain"
   },
 
-  "common.actions": {
+  "common.action": {
     "sign-up": "Sign up",
     "sign-in": "Sign in",
     "sign-out": "Sign out",
@@ -43,6 +44,9 @@
 
 
   "text": {
-    "fill-the-input": "Placeholder"
+    "fill-the-input": "Placeholder",
+    "canonical-name": "Canonical name",
+    "ttl-explain": "Caching expire time",
+    "add-zone": "Add zone"
   }
 }
