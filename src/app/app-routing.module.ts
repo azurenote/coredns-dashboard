@@ -4,7 +4,7 @@ import { ZoneListViewComponent } from './views/zone-list-view/zone-list-view.com
 import { ZoneDetailViewComponent } from './views/zone-detail-view/zone-detail-view.component';
 
 const routes: Routes = [
-  { path: 'zone', component: ZoneDetailViewComponent },
+  { path: 'zone/:id', component: ZoneDetailViewComponent },
   { path: '**', component: ZoneListViewComponent }
 ];
 
