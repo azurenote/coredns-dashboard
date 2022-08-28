@@ -3,6 +3,7 @@ import { TranslateModule } from '@ngx-translate/core';
 
 import { RecordContentDisplayComponent } from './record-content-display.component';
 import { BadgeLabelComponent } from '../badge-label/badge-label.component';
+import { RecordA, RecordCNAME, RecordMX } from '../../models/record.entity';
 
 describe('RecordContentDisplayComponent', () => {
   let component: RecordContentDisplayComponent;
@@ -33,7 +34,7 @@ describe('RecordContentDisplayComponent', () => {
   describe('with A record', () => {
     it('shows IP of content field', () => {
 
-      const testData = {
+      const testData: RecordA = {
         recordType: 'A',
         zone: 'test.',
         name: 'unit',
@@ -58,7 +59,7 @@ describe('RecordContentDisplayComponent', () => {
   describe('with MX record', () => {
     it('shows mail host of content field', () => {
 
-      const testData = {
+      const testData: RecordMX = {
         recordType: 'MX',
         zone: 'unit.test.',
         name: 'mail',
@@ -82,7 +83,7 @@ describe('RecordContentDisplayComponent', () => {
 
     it ('shows priority of the record', () => {
 
-      const testData = {
+      const testData: RecordMX = {
         recordType: 'MX',
         zone: 'unit.test.',
         name: 'mail',
@@ -114,7 +115,7 @@ describe('RecordContentDisplayComponent', () => {
   describe('with CNAME record', () => {
     it('shows canonical name of the record', () => {
 
-      const testData = {
+      const testData: RecordCNAME = {
         recordType: 'CNAME',
         zone: 'test.',
         name: 'unit',
