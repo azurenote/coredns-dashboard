@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { TranslateModule } from '@ngx-translate/core';
@@ -16,7 +17,8 @@ describe('RecordEditorTypeAComponent', () => {
         NoopAnimationsModule,
         TranslateModule.forRoot(),
         MatFormFieldModule,
-        MatInputModule
+        MatInputModule,
+        ReactiveFormsModule,
       ],
       declarations: [ RecordEditorTypeAComponent ]
     })
@@ -31,7 +33,7 @@ describe('RecordEditorTypeAComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should have a text input for domain name', () => {
+  it('has a text input for domain name', () => {
     const compiled = fixture.debugElement.nativeElement;
     const inputElement: Element = compiled.querySelector('mat-form-field input[name="name"]');
 
@@ -44,7 +46,7 @@ describe('RecordEditorTypeAComponent', () => {
       .toEqual('text.fill-the-input');
   });
 
-  it('should a have text input for IPv4 address', () => {
+  it('has a text input for IPv4 address', () => {
     const compiled = fixture.debugElement.nativeElement;
     const inputElement = compiled.querySelector('mat-form-field input[name="ipv4"]');
 
@@ -57,7 +59,7 @@ describe('RecordEditorTypeAComponent', () => {
       .toEqual('text.fill-the-input');
   });
 
-  it('should have a number input for TTL', () => {
+  it('has a number input for TTL', () => {
     const compiled = fixture.debugElement.nativeElement;
     const inputElement = compiled.querySelector('mat-form-field input[name="ttl"]');
 
@@ -68,5 +70,43 @@ describe('RecordEditorTypeAComponent', () => {
 
     expect(inputElement.getAttribute('placeholder'))
       .toEqual('keywords.ttl');
+  });
+
+  describe('with record input',  () => {
+    let component: RecordEditorTypeAComponent;
+    let fixture: ComponentFixture<RecordEditorTypeAComponent>;
+
+    beforeEach(async () => {
+      fixture = TestBed.createComponent(RecordEditorTypeAComponent);
+      component = fixture.componentInstance;
+
+      component.record = {
+        zone: 'zone.',
+        name: 'name',
+        ttl: 300,
+        recordType: 'A',
+        content: {
+          ip: '1.2.3.4'
+        }
+      }
+
+      fixture.detectChanges();
+    });
+
+    it('displays content of record', () => {
+      const compiled = fixture.debugElement.nativeElement;
+
+      const nameInput = compiled.querySelector('mat-form-field input[name="name"]')
+      expect(nameInput.value)
+        .toEqual(component.record.name);
+
+      const contentInput = compiled.querySelector('mat-form-field input[name="ipv4"]')
+      expect(contentInput.value)
+        .toEqual(component.record.content.ip);
+
+      const ttlInput = compiled.querySelector('mat-form-field input[name="ttl"]');
+      expect(parseInt(ttlInput.value))
+        .toEqual(component.record.ttl);
+    });
   });
 });

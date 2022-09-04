@@ -4,6 +4,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { RecordContentDisplayComponent } from './record-content-display.component';
 import { BadgeLabelComponent } from '../badge-label/badge-label.component';
 import { RecordA, RecordCNAME, RecordMX } from '../../models/record.entity';
+import { ReactiveFormsModule } from '@angular/forms';
 
 describe('RecordContentDisplayComponent', () => {
   let component: RecordContentDisplayComponent;
@@ -12,7 +13,8 @@ describe('RecordContentDisplayComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [
-        TranslateModule.forRoot()
+        TranslateModule.forRoot(),
+        ReactiveFormsModule
       ],
       declarations: [
         RecordContentDisplayComponent,
