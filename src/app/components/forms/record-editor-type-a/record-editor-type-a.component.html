@@ -3,26 +3,38 @@
     <mat-label translate="keywords.name"></mat-label>
     <input matInput name="name" type="text"
            formControlName="name"
-           [placeholder]="'text.fill-the-input' | translate">
+           [placeholder]="'text.fill-the-input' | translate"
+           [errorStateMatcher]="matcher">
     <mat-icon matSuffix>check</mat-icon>
     <mat-hint>Hint</mat-hint>
+    <mat-error *ngIf="form.controls.name.hasError('required')">
+      Name is <strong>required</strong>
+    </mat-error>
   </mat-form-field>
 
   <mat-form-field>
     <mat-label>IPv4 Address</mat-label>
     <input matInput name="ipv4" type="text"
            formControlName="ipv4"
-           [placeholder]="'text.fill-the-input' | translate">
+           [placeholder]="'text.fill-the-input' | translate"
+           [errorStateMatcher]="matcher">
     <mat-icon matSuffix>check</mat-icon>
     <mat-hint>Hint</mat-hint>
+    <mat-error *ngIf="form.controls.ipv4.hasError('required')">
+      Host IP is <strong>required</strong>
+    </mat-error>
   </mat-form-field>
 
   <mat-form-field>
     <mat-label translate="keywords.ttl"></mat-label>
     <input matInput name="ttl" type="number"
            formControlName="ttl"
-           [placeholder]="'keywords.ttl' | translate">
+           [placeholder]="'keywords.ttl' | translate"
+           [errorStateMatcher]="matcher">
     <mat-icon matSuffix>check</mat-icon>
     <mat-hint>0~65535</mat-hint>
+    <mat-error *ngIf="form.controls.ttl.hasError('required')">
+      TTL is <strong>required</strong>
+    </mat-error>
   </mat-form-field>
 </ng-container>

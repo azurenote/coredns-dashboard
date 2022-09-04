@@ -1,8 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 
 import { ZoneDetailViewComponent } from './zone-detail-view.component';
 import { ZoneRecordListComponent } from "../../components/zone-record-list/zone-record-list.component";
-import { RouterTestingModule } from '@angular/router/testing';
 
 describe('ZoneDetailViewComponent', () => {
   let component: ZoneDetailViewComponent;
@@ -10,10 +10,12 @@ describe('ZoneDetailViewComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [
+        RouterTestingModule,
+      ],
       declarations: [
         ZoneDetailViewComponent,
-        ZoneRecordListComponent,
-        RouterTestingModule
+        ZoneRecordListComponent
       ]
     })
     .compileComponents();

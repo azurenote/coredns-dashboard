@@ -3,18 +3,26 @@
     <mat-label translate="keywords.name"></mat-label>
     <input matInput name="name" type="text"
            formControlName="name"
-           [placeholder]="'text.fill-the-input' | translate">
+           [placeholder]="'text.fill-the-input' | translate"
+           [errorStateMatcher]="matcher">
     <mat-icon matSuffix>check</mat-icon>
     <mat-hint>Hint</mat-hint>
+    <mat-error *ngIf="form.controls.name.hasError('required')">
+      Name is <strong>required</strong>
+    </mat-error>
   </mat-form-field>
 
   <mat-form-field>
     <mat-label>Host</mat-label>
     <input matInput name="host" type="text"
            formControlName="host"
-           [placeholder]="'text.fill-the-input' | translate">
+           [placeholder]="'text.fill-the-input' | translate"
+           [errorStateMatcher]="matcher">
     <mat-icon matSuffix>check</mat-icon>
     <mat-hint>Hint</mat-hint>
+    <mat-error *ngIf="form.controls.host.hasError('required')">
+      TTL is <strong>required</strong>
+    </mat-error>
   </mat-form-field>
 
   <mat-form-field>
@@ -24,14 +32,21 @@
            [placeholder]="'keywords.ttl' | translate">
     <mat-icon matSuffix>check</mat-icon>
     <mat-hint>0~65535</mat-hint>
+    <mat-error *ngIf="form.controls.ttl.hasError('required')">
+      TTL is <strong>required</strong>
+    </mat-error>
   </mat-form-field>
 
   <mat-form-field>
     <mat-label translate="keywords.priority"></mat-label>
     <input matInput name="priority" type="number"
            formControlName="priority"
-           [placeholder]="'keywords.priority' | translate">
+           [placeholder]="'keywords.priority' | translate"
+           [errorStateMatcher]="matcher">
     <mat-icon matSuffix>check</mat-icon>
     <mat-hint>Hint</mat-hint>
+    <mat-error *ngIf="form.controls.priority.hasError('required')">
+      Priority is <strong>required</strong>
+    </mat-error>
   </mat-form-field>
 </ng-container>

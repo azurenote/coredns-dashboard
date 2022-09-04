@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Record, emptyRecord } from '../../../models';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { RecordA } from '../../../models/record.entity';
+import { GeneralErrorStateMatcherService } from '../../../materials/general-error-state-matcher.service';
 
 @Component({
   selector: 'app-record-editor-type-a',
@@ -20,7 +21,8 @@ export class RecordEditorTypeAComponent implements OnInit {
   form: FormGroup;
 
   constructor(
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    public matcher: GeneralErrorStateMatcherService
   ) {
     this.form = this.fb.group({
       name: ['', [Validators.required]],
