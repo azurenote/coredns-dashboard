@@ -1,5 +1,7 @@
 # CorednsDashboard
 
+[![CircleCI](https://dl.circleci.com/status-badge/img/gh/azurenote/coredns-dashboard/tree/main.svg?style=shield)](https://dl.circleci.com/status-badge/redirect/gh/azurenote/coredns-dashboard/tree/main)
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.1.2.
 
 ## Development server
