@@ -7,7 +7,7 @@
            [errorStateMatcher]="matcher">
     <mat-icon matSuffix>check</mat-icon>
     <mat-hint>Hint</mat-hint>
-    <mat-error *ngIf="form.controls.name.hasError('required')">
+    <mat-error *ngIf="form.controls['name'].hasError('required')">
       Name is <strong>required</strong>
     </mat-error>
   </mat-form-field>
@@ -20,7 +20,7 @@
            [errorStateMatcher]="matcher">
     <mat-icon matSuffix>check</mat-icon>
     <mat-hint>Hint</mat-hint>
-    <mat-error *ngIf="form.controls.host.hasError('required')">
+    <mat-error *ngIf="form.controls['host'].hasError('required')">
       TTL is <strong>required</strong>
     </mat-error>
   </mat-form-field>
@@ -32,7 +32,7 @@
            [placeholder]="'keywords.ttl' | translate">
     <mat-icon matSuffix>check</mat-icon>
     <mat-hint>0~65535</mat-hint>
-    <mat-error *ngIf="form.controls.ttl.hasError('required')">
+    <mat-error *ngIf="form.controls['ttl'].hasError('required')">
       TTL is <strong>required</strong>
     </mat-error>
   </mat-form-field>
@@ -45,7 +45,7 @@
            [errorStateMatcher]="matcher">
     <mat-icon matSuffix>check</mat-icon>
     <mat-hint>Hint</mat-hint>
-    <mat-error *ngIf="form.controls.priority.hasError('required')">
+    <mat-error *ngIf="form.controls['priority'].hasError('required')">
       Priority is <strong>required</strong>
     </mat-error>
   </mat-form-field>
