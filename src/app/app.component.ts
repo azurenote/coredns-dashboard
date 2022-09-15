@@ -17,7 +17,6 @@ export class AppComponent {
   }
 
   confirmSignOut() {
-
     this.dialog.open(ConfirmDialogComponent, {});
   }
 }

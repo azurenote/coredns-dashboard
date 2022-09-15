@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-zone-detail-view',
@@ -7,7 +10,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ZoneDetailViewComponent implements OnInit {
 
-  constructor() { }
+  public activeZoneId$: Observable<number>;
+
+  constructor(
+    private activeRoute: ActivatedRoute
+  ) {
+    this.activeZoneId$ = activeRoute.params.pipe(
+      map(params => parseInt(params['id']))
+    );
+  }
 
   ngOnInit(): void {
   }

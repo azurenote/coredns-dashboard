@@ -1,6 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 
+import { Observable, of } from 'rxjs';
+import { map, switchMap } from 'rxjs/operators';
+import { Apollo, gql } from 'apollo-angular';
 import { Record } from '../../models';
 
 @Component({
@@ -15,7 +18,11 @@ import { Record } from '../../models';
     ]),
   ],
 })
-export class ZoneRecordListComponent {
+export class ZoneRecordListComponent implements OnInit {
+
+  @Input()
+  zoneId$: Observable<number> = of(0);
+
 
   displayedColumns: string[] = [
     'recordType',
@@ -26,44 +33,43 @@ export class ZoneRecordListComponent {
   ]
   columnsToDisplayWithExpand = [...this.displayedColumns, 'expand'];
 
-  dataSource: Record[] = [
-    {
-      id: 1,
-      zone: 'data.dev',
-      name: '@',
-      content: {
-        ip: "192.168.0.1"
-      },
-      ttl: 300,
-      recordType: 'A',
-      createdAt: new Date()
-    },
-    {
-      id: 1,
-      zone: 'data.dev',
-      name: 'mail',
-      content: {
-        host: "192.168.0.1",
-        priority: 100
-      },
-      ttl: 3600,
-      recordType: 'MX',
-      createdAt: new Date()
-    },
-    {
-      id: 1,
-      zone: 'data.dev',
-      name: 'site',
-      content: {
-        target: "canonical.host.name"
-      },
-      ttl: 3600,
-      recordType: 'CNAME',
-      createdAt: new Date()
-    }
-  ];
-
   expandedElement: Record | null = null;
 
-  constructor() { }
+  public dataSource$: Observable<Record[]> = of([]);
+
+  constructor(private graphql: Apollo) {
+
+  }
+
+  ngOnInit() {
+
+    this.dataSource$ = this.zoneId$.pipe(
+      switchMap(id => {
+        console.log('zone.id', id);
+        return this.graphql.watchQuery<{ records: Record[] }>({
+          query: gql` query getRecords($zoneId: Int!) {
+            records(zoneId: $zoneId) {
+              id, name, zone, ttl,
+              createdAt,
+              recordType, content {
+                ... on RecordA {
+                  ip
+                }
+                ... on RecordMX {
+                  host, priority
+                }
+              }
+            }
+          }`,
+          variables: {
+            zoneId: id
+          }
+        }).valueChanges.pipe(
+          map(res => {
+            return res.data.records
+          })
+        )
+      })
+    );
+  }
 }

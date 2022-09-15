@@ -1,50 +1,28 @@
-<mat-drawer-container>
-  <mat-drawer #drawer mode="side">
-    <mat-toolbar color="primary">
-      <span translate="keywords.zones"></span>
-    </mat-toolbar>
 
-    <mat-list>
-      <mat-list-item>item</mat-list-item>
-    </mat-list>
+<mat-toolbar color="primary">
+  <span>CoreDNS Dashboard</span>
 
-  </mat-drawer>
-  <mat-drawer-content>
+  <span class="example-spacer"></span>
 
-    <mat-toolbar color="primary">
-      <button mat-icon-button
-              aria-label="Drawer toggle button"
-              (click)="drawer.toggle()">
-        <mat-icon>menu</mat-icon>
-      </button>
+  <button mat-icon-button
+          aria-label="User information"
+          (mouseover)="isOpen = true"
+          (mouseout)="isOpen = false"
+          cdkOverlayOrigin #trigger="cdkOverlayOrigin">
+    <mat-icon>person</mat-icon>
+  </button>
 
-      <span>CoreDNS Dashboard</span>
+  <button mat-icon-button
+          aria-label="Sign out button"
+          [matTooltip]="'common.action.sign-out' | translate"
+          (click)="confirmSignOut()">
+    <mat-icon>logout</mat-icon>
+  </button>
+</mat-toolbar>
 
-      <span class="example-spacer"></span>
-
-      <button mat-icon-button
-              aria-label="User information"
-              (mouseover)="isOpen = true"
-              (mouseout)="isOpen = false"
-              cdkOverlayOrigin #trigger="cdkOverlayOrigin">
-        <mat-icon>person</mat-icon>
-      </button>
-
-      <button mat-icon-button
-              aria-label="Sign out button"
-              [matTooltip]="'common.actions.sign-out' | translate"
-              (click)="confirmSignOut()">
-        <mat-icon>logout</mat-icon>
-      </button>
-    </mat-toolbar>
-
-    <main>
-      <router-outlet></router-outlet>
-    </main>
-
-  </mat-drawer-content>
-</mat-drawer-container>
-
+<main>
+  <router-outlet></router-outlet>
+</main>
 
 <ng-template
   cdkConnectedOverlay

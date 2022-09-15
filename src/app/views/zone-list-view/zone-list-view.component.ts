@@ -13,6 +13,8 @@ export class ZoneListViewComponent {
   constructor(private router: Router) { }
 
   async navigate($event: Zone) {
-    await this.router.navigate(['/zone']);
+    await this.router.navigate(['/zone', $event.id], {
+      state: $event
+    });
   }
 }

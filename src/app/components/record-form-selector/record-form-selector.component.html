@@ -10,10 +10,22 @@
     </ng-container>
 
     <mat-card-actions fxLayoutAlign="space-between center">
-      <button mat-raised-button color="warn" type="button" (click)="delete()" translate="common.actions.delete"></button>
+      <button mat-raised-button color="warn" type="button"
+              role="button"
+              aria-label="record-delete"
+              translate="common.action.delete"
+              (click)="delete()"></button>
       <span>
-        <button mat-raised-button color="primary" (click)="save()" translate="common.actions.save"></button>
-        <button mat-raised-button type="button" (click)="cancel()" translate="common.actions.cancel"></button>
+        <button mat-raised-button color="primary"
+                role="button"
+                aria-label="record-save"
+                translate="common.action.save"
+                (click)="save()"></button>
+        <button mat-raised-button type="button"
+                role="button"
+                aria-label="record-cancel"
+                translate="common.action.cancel"
+                (click)="cancel()"></button>
       </span>
     </mat-card-actions>
   </mat-card>

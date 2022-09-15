@@ -25,6 +25,7 @@ import { RecordFormSelectorComponent } from './components/record-form-selector/r
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { MatBadgeModule } from '@angular/material/badge';
 import { BadgeLabelComponent } from './components/badge-label/badge-label.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -65,7 +66,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     }),
     MaterialsModule,
     GraphQLModule,
-    MatBadgeModule
+    ReactiveFormsModule
   ],
   providers: [
     {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}}

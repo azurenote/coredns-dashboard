@@ -4,16 +4,15 @@
   </div>
 
   <div *ngSwitchCase="'MX'" fxLayoutAlign="space-between">
-    {{record.content.host}}
+    <span>{{record.content.host}}</span>
     <app-badge-label [value]="record.content.priority | number"
                      [matTooltip]="'keywords.priority' | translate"></app-badge-label>
   </div>
 
   <div *ngSwitchCase="'CNAME'">
-    {{record.content.target}}
+    {{record.content.host}}
   </div>
 
   <div *ngSwitchDefault>
-    {{record.content}}
   </div>
 </ng-container>

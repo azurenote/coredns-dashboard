@@ -12,7 +12,7 @@ export class RecordContentDisplayComponent {
   record: Record = {
     zone: '',
     name: '',
-    recordType: 'A',
+    recordType: '',
     ttl: 0,
     content: {},
   };
