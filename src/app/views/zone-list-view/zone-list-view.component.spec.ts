@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ApolloTestingModule } from 'apollo-angular/testing';
 
 import { MaterialsModule } from '../../materials/materials.module';
 import { ZoneListViewComponent } from './zone-list-view.component';
@@ -14,7 +15,8 @@ describe('ZoneListViewComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [
-        MaterialsModule
+        MaterialsModule,
+        ApolloTestingModule
       ],
       declarations: [
         ZoneListViewComponent,

@@ -7,6 +7,7 @@ import { RecordFormSelectorComponent } from './record-form-selector.component';
 import { RecordEditorTypeAComponent } from '../forms/record-editor-type-a/record-editor-type-a.component';
 import { RecordEditorTypeCnameComponent } from '../forms/record-editor-type-cname/record-editor-type-cname.component';
 import { RecordEditorTypeMxComponent } from '../forms/record-editor-type-mx/record-editor-type-mx.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 describe('RecordFormSelectorComponent', () => {
   let component: RecordFormSelectorComponent;
@@ -16,7 +17,8 @@ describe('RecordFormSelectorComponent', () => {
     await TestBed.configureTestingModule({
       imports: [
         MatCardModule,
-        TranslateModule.forRoot()
+        TranslateModule.forRoot(),
+        ReactiveFormsModule
       ],
       declarations: [
         RecordFormSelectorComponent,

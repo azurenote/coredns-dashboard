@@ -1,7 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { map, Observable } from 'rxjs';
-import { Zone } from '../../models';
-import { ZoneService } from '../../domains/zone.service';
+import { Zone, ZoneList } from '../../models';
+import { Apollo, gql } from "apollo-angular";
 
 @Component({
   selector: 'app-zone-list',
@@ -17,8 +17,16 @@ export class ZoneListComponent implements OnInit {
 
   displayedColumns: string[] = ['name', 'createdAt'];
 
-  constructor(private zone: ZoneService) {
-    let source = this.zone.getZoneList();
+  public readonly LIST_QUERY = gql`
+    query {
+      zones {
+        id, name, createdAt
+      }
+    }
+  `;
+
+  constructor(private apollo: Apollo) {
+    let source = this.getZoneList();
 
     this.dataSource$ = source.pipe(map(res => {
       return res.data.zones;
@@ -27,4 +35,11 @@ export class ZoneListComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+  getZoneList() {
+    return this.apollo.watchQuery<ZoneList>({
+      query: this.LIST_QUERY
+    }).valueChanges;
+  }
+
 }
