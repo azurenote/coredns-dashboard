@@ -50,6 +50,6 @@ describe('RecordEditorComponent', () => {
 
     expect(formSelected).toBeTruthy();
 
-    expect(componentInstance.item?.recordType).toEqual('A');
+    expect(componentInstance.form.value.recordType).toEqual('A');
   });
 });
