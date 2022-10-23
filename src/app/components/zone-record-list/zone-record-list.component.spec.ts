@@ -1,4 +1,4 @@
-import { ComponentFixture, fakeAsync, flush, TestBed, waitForAsync } from '@angular/core/testing';
+import { ComponentFixture, flush, TestBed, waitForAsync } from '@angular/core/testing';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTableModule } from '@angular/material/table';
@@ -43,39 +43,4 @@ describe('ZoneRecordListComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-
-  it('has a data table', fakeAsync(async () => {
-
-    component.ngOnInit();
-
-    controller.expectOne(component.QUERY).flush({
-      data:{
-        records: [
-          {
-            id: 0,
-            zone: 'test.',
-            name: 'test',
-            recordType: 'A',
-            ttl: 300,
-            createdAt: new Date(),
-            content: {
-              ip: '1.2.3.4'
-            }
-          }
-        ]
-      }
-    });
-
-    await fixture.whenStable();
-    fixture.detectChanges();
-
-    flush();
-
-    const { debugElement } = fixture;
-    const inputElement = debugElement.query(By.css('table#zone-record-list'));
-
-    expect(inputElement)
-      .withContext('Check if is there a table with the specified ID')
-      .toBeTruthy();
-  }));
 });

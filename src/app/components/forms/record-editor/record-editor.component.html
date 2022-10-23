@@ -1,0 +1,24 @@
+<ng-container [formGroup]="form">
+  <mat-form-field>
+    <mat-select formControlName="recordType" data-test-id="type-selector">
+      <mat-option *ngFor="let option of recordTypeOptions" [value]="option"></mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <ng-container [ngSwitch]="item?.recordType">
+
+    <app-record-editor-type-a
+      *ngSwitchCase="'A'"
+      data-test-id="type-a-editor"></app-record-editor-type-a>
+    <app-record-editor-type-mx
+      *ngSwitchCase="'MX'"
+      data-test-id="type-mx-editor"></app-record-editor-type-mx>
+    <app-record-editor-type-cname
+      *ngSwitchCase="'CNAME'"
+      data-test-id="type-cname-editor"></app-record-editor-type-cname>
+
+    <div *ngSwitchDefault fxLayoutAlign="center center">
+      Unsupported record type: {{item?.recordType}} <mat-icon>error_outline</mat-icon>
+    </div>
+  </ng-container>
+</ng-container>
