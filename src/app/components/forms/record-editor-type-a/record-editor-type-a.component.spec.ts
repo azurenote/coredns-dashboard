@@ -102,7 +102,7 @@ describe('RecordEditorTypeAComponent', () => {
 
       const contentInput = compiled.querySelector('mat-form-field input[name="ipv4"]')
       expect(contentInput.value)
-        .toEqual(component.form.value.content.ip);
+        .toEqual(component.form.value.ipv4);
 
       const ttlInput = compiled.querySelector('mat-form-field input[name="ttl"]');
       expect(parseInt(ttlInput.value))

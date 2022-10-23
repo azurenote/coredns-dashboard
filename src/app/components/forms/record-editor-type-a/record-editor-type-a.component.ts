@@ -60,6 +60,13 @@ export class RecordEditorTypeAComponent
     this.record = {
       ...record
     };
+    const { name, ttl, content } = record;
+
+    this.form.patchValue({
+      name,
+      ipv4: content.ip,
+      ttl
+    });
   }
 
   registerOnChange(fn: any): void {
@@ -75,7 +82,7 @@ export class RecordEditorTypeAComponent
 
     this.record.name = name;
     this.record.ttl = ttl;
-    this.record.content.ip = ipv4;
+    this.record.content.ip = ipv4
 
     this.propagateChange(this.record);
   }
