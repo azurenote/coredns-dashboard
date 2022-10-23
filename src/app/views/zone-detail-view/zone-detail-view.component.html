@@ -2,10 +2,10 @@
   <header fxLayout="row" fxLayoutAlign="center start" class="container">
     <div fxFlex="80" fxLayout="row" fxLayoutAlign="start center">
       <h2>Zone</h2>
-      <label class="zone-label">data.dev</label>
+      <label class="zone-label">{{zone$|async}}</label>
     </div>
   </header>
   <div fxLayout="row" fxLayoutAlign="center start" class="container">
-    <app-zone-record-list fxFlex="80" [zoneId$]="activeZoneId$"></app-zone-record-list>
+    <app-zone-record-list fxFlex="80" [list$]="list$"></app-zone-record-list>
   </div>
 </section>

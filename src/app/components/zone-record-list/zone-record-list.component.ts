@@ -1,12 +1,8 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 
 import { Observable, of } from 'rxjs';
-import { map, switchMap } from 'rxjs/operators';
-import { Apollo, gql } from 'apollo-angular';
 import { Record } from '../../models';
-
-type Response = { records: Record[] };
 
 @Component({
   selector: 'app-zone-record-list',
@@ -20,25 +16,10 @@ type Response = { records: Record[] };
     ]),
   ],
 })
-export class ZoneRecordListComponent implements OnInit {
+export class ZoneRecordListComponent {
 
   @Input()
-  zoneId$: Observable<number> = of(0);
-
-  public readonly QUERY = gql`query getRecords($zoneId: Int!) {
-    records(zoneId: $zoneId) {
-      id, name, zone, ttl,
-      createdAt,
-      recordType, content {
-        ... on RecordA {
-          ip
-        }
-        ... on RecordMX {
-          host, priority
-        }
-      }
-    }
-  }`;
+  list$: Observable<Record[]> = of([]);
 
   displayedColumns: string[] = [
     'recordType',
@@ -51,28 +32,5 @@ export class ZoneRecordListComponent implements OnInit {
 
   expandedElement: Record | null = null;
 
-  public dataSource$: Observable<Record[]> = of([]);
-
-  constructor(private graphql: Apollo) {
-
-  }
-
-  ngOnInit() {
-
-    this.dataSource$ = this.zoneId$.pipe(
-      switchMap(id => {
-        console.log('zone.id', id);
-        return this.graphql.watchQuery<Response>({
-          query: this.QUERY,
-          variables: {
-            zoneId: id
-          }
-        }).valueChanges.pipe(
-          map(res => {
-            return res.data.records
-          })
-        )
-      })
-    );
-  }
+  constructor() {}
 }
