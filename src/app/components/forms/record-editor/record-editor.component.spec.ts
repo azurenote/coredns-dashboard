@@ -49,5 +49,7 @@ describe('RecordEditorComponent', () => {
     const formSelected = debugElement.query(By.css('[data-test-id="type-a-editor"]'));
 
     expect(formSelected).toBeTruthy();
+
+    expect(componentInstance.item?.recordType).toEqual('A');
   });
 });

@@ -5,7 +5,7 @@
     </mat-select>
   </mat-form-field>
 
-  <ng-container [ngSwitch]="item?.recordType">
+  <ng-container [ngSwitch]="form.controls['recordType'].value">
 
     <app-record-editor-type-a
       *ngSwitchCase="'A'"
@@ -18,7 +18,8 @@
       data-test-id="type-cname-editor"></app-record-editor-type-cname>
 
     <div *ngSwitchDefault fxLayoutAlign="center center">
-      Unsupported record type: {{item?.recordType}} <mat-icon>error_outline</mat-icon>
+      Unsupported record type: {{form.controls['recordType'].value}}
+      <mat-icon>error_outline</mat-icon>
     </div>
   </ng-container>
 </ng-container>
