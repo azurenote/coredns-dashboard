@@ -80,7 +80,7 @@ describe('RecordEditorTypeAComponent', () => {
       fixture = TestBed.createComponent(RecordEditorTypeAComponent);
       component = fixture.componentInstance;
 
-      component.record = {
+      component.writeValue({
         zone: 'zone.',
         name: 'name',
         ttl: 300,
@@ -88,7 +88,7 @@ describe('RecordEditorTypeAComponent', () => {
         content: {
           ip: '1.2.3.4'
         }
-      }
+      });
 
       fixture.detectChanges();
     });
@@ -98,15 +98,15 @@ describe('RecordEditorTypeAComponent', () => {
 
       const nameInput = compiled.querySelector('mat-form-field input[name="name"]')
       expect(nameInput.value)
-        .toEqual(component.record.name);
+        .toEqual(component.form.value.name);
 
       const contentInput = compiled.querySelector('mat-form-field input[name="ipv4"]')
       expect(contentInput.value)
-        .toEqual(component.record.content.ip);
+        .toEqual(component.form.value.content.ip);
 
       const ttlInput = compiled.querySelector('mat-form-field input[name="ttl"]');
       expect(parseInt(ttlInput.value))
-        .toEqual(component.record.ttl);
+        .toEqual(component.form.value.ttl);
     });
   });
 });

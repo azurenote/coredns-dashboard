@@ -1,24 +1,38 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Record, emptyRecord } from '../../../models';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { RecordA } from '../../../models/record.entity';
+import { Component, forwardRef, OnInit } from '@angular/core';
+import {
+  ControlValueAccessor, FormBuilder, FormGroup,
+  NG_VALUE_ACCESSOR, Validators
+} from '@angular/forms';
+import { Subscription } from 'rxjs';
+
+import { Record, emptyRecord, RecordA } from '../../../models';
 import { GeneralErrorStateMatcherService } from '../../../materials/general-error-state-matcher.service';
+
 
 @Component({
   selector: 'app-record-editor-type-a',
   templateUrl: './record-editor-type-a.component.html',
-  styleUrls: ['./record-editor-type-a.component.scss']
+  styleUrls: ['./record-editor-type-a.component.scss'],
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => RecordEditorTypeAComponent),
+      multi: true
+    }
+  ]
 })
-export class RecordEditorTypeAComponent implements OnInit {
+export class RecordEditorTypeAComponent
+  implements OnInit, ControlValueAccessor {
 
-  @Input()
-  record: RecordA = {
+  private record: RecordA = {
     ...emptyRecord(),
     recordType: 'A',
     content: { ip: '' },
   };
 
   form: FormGroup;
+  propagateChange = (_: any) => {};
+  private formUpdate$: Subscription;
 
   constructor(
     private fb: FormBuilder,
@@ -29,6 +43,9 @@ export class RecordEditorTypeAComponent implements OnInit {
       ipv4: ['', [Validators.required]],
       ttl: [3600, [Validators.required]]
     });
+
+    this.formUpdate$ = this.form
+      .valueChanges.subscribe(data => this.onFormValueChanged(data));
   }
 
   ngOnInit(): void {
@@ -37,6 +54,30 @@ export class RecordEditorTypeAComponent implements OnInit {
       ipv4: this.record.content.ip,
       ttl: this.record.ttl
     });
+  }
+
+  writeValue(record: RecordA): void {
+    this.record = {
+      ...record
+    };
+  }
+
+  registerOnChange(fn: any): void {
+    this.propagateChange = fn;
+  }
+
+  registerOnTouched(fn: any): void {
+    throw new Error('Method not implemented.');
+  }
+
+  private onFormValueChanged(data: { name: string, ipv4: string, ttl: number }) {
+    const { name, ttl, ipv4 } = data;
+
+    this.record.name = name;
+    this.record.ttl = ttl;
+    this.record.content.ip = ipv4;
+
+    this.propagateChange(this.record);
   }
 
 }
