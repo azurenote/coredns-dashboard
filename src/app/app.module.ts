@@ -23,9 +23,9 @@ import { RecordEditorTypeMxComponent } from './components/forms/record-editor-ty
 import { RecordEditorTypeCnameComponent } from './components/forms/record-editor-type-cname/record-editor-type-cname.component';
 import { RecordFormSelectorComponent } from './components/record-form-selector/record-form-selector.component';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
-import { MatBadgeModule } from '@angular/material/badge';
 import { BadgeLabelComponent } from './components/badge-label/badge-label.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { RecordEditorComponent } from './components/forms/record-editor/record-editor.component';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -46,7 +46,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     RecordEditorTypeMxComponent,
     RecordEditorTypeCnameComponent,
     RecordFormSelectorComponent,
-    BadgeLabelComponent
+    BadgeLabelComponent,
+    RecordEditorComponent
   ],
   imports: [
     BrowserModule,

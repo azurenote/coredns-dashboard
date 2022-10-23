@@ -10,7 +10,8 @@ export interface RecordEntity {
   zoneId?: number
 }
 
-export type RecordTypeEnum = 'A' | 'MX' |'CNAME' |'';
+export const RecordTypeOptions = ['A', 'MX', 'CNAME', ''] as const;
+export type RecordTypeEnum = typeof RecordTypeOptions[number];
 
 export interface RecordA extends RecordEntity {
   recordType: 'A',

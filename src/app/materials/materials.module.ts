@@ -12,6 +12,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatBadgeModule } from '@angular/material/badge';
+import { MatSelectModule } from "@angular/material/select";
 
 const MATERIALS = [
   MatBadgeModule,
@@ -22,6 +23,7 @@ const MATERIALS = [
   MatIconModule,
   MatInputModule,
   MatListModule,
+  MatSelectModule,
   MatSidenavModule,
   MatTableModule,
   MatToolbarModule,

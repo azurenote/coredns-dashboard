@@ -6,6 +6,8 @@ import { map, switchMap } from 'rxjs/operators';
 import { Apollo, gql } from 'apollo-angular';
 import { Record } from '../../models';
 
+type Response = { records: Record[] };
+
 @Component({
   selector: 'app-zone-record-list',
   templateUrl: './zone-record-list.component.html',
@@ -23,6 +25,20 @@ export class ZoneRecordListComponent implements OnInit {
   @Input()
   zoneId$: Observable<number> = of(0);
 
+  public readonly QUERY = gql`query getRecords($zoneId: Int!) {
+    records(zoneId: $zoneId) {
+      id, name, zone, ttl,
+      createdAt,
+      recordType, content {
+        ... on RecordA {
+          ip
+        }
+        ... on RecordMX {
+          host, priority
+        }
+      }
+    }
+  }`;
 
   displayedColumns: string[] = [
     'recordType',
@@ -46,21 +62,8 @@ export class ZoneRecordListComponent implements OnInit {
     this.dataSource$ = this.zoneId$.pipe(
       switchMap(id => {
         console.log('zone.id', id);
-        return this.graphql.watchQuery<{ records: Record[] }>({
-          query: gql` query getRecords($zoneId: Int!) {
-            records(zoneId: $zoneId) {
-              id, name, zone, ttl,
-              createdAt,
-              recordType, content {
-                ... on RecordA {
-                  ip
-                }
-                ... on RecordMX {
-                  host, priority
-                }
-              }
-            }
-          }`,
+        return this.graphql.watchQuery<Response>({
+          query: this.QUERY,
           variables: {
             zoneId: id
           }
