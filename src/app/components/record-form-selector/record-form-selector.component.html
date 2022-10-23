@@ -1,7 +1,7 @@
-<form>
+<form [formGroup]="form">
   <mat-card>
     <ng-container [ngSwitch]="item?.recordType">
-      <app-record-editor-type-a *ngSwitchCase="'A'"></app-record-editor-type-a>
+      <app-record-editor-type-a *ngSwitchCase="'A'" formControlName="record"></app-record-editor-type-a>
       <app-record-editor-type-mx *ngSwitchCase="'MX'"></app-record-editor-type-mx>
       <app-record-editor-type-cname *ngSwitchCase="'CNAME'"></app-record-editor-type-cname>
       <div *ngSwitchDefault fxLayoutAlign="center center">

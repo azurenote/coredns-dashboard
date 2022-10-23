@@ -74,7 +74,6 @@ export class RecordEditorTypeAComponent
   }
 
   registerOnTouched(fn: any): void {
-    throw new Error('Method not implemented.');
   }
 
   private onFormValueChanged(data: { name: string, ipv4: string, ttl: number }) {
@@ -82,7 +81,7 @@ export class RecordEditorTypeAComponent
 
     this.record.name = name;
     this.record.ttl = ttl;
-    this.record.content.ip = ipv4
+    this.record.content = { ip: ipv4 };
 
     this.propagateChange(this.record);
   }
